@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Clue #1</title>
+        <link rel="stylesheet" href="custom.css">
+
+        <!-- python syntax highlight -->
+         <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    </head>
+    
+    <body>
+        <header class="hero">
+            <div class="hero-content">
+                <span class="arcade-tag">Unsolved</span>
+                <h1>Clue #1</h1>
+                <p>Trace the function execution step-by-step.</p>
+            </div>
+        </header>
+
+        <main class="container" style="max-width: 800px; padding: 2rem 1.5rem;">
+            <div class="panel" style="margin-bottom: 2rem;">
+                <h2>Mission Objective</h2>
+                <p>
+                    Trace the Python code below. The user inputs the exact action sequence 
+                <code style="color: var(--frog-green); font-family: 'Fira Code', monospace;">"AAEAA"</code>.
+                </p>
+                <p style="margin-top: 0.75rem; color: var(--text-muted);">
+                    What is the final number of <strong>flies</strong> left over when the code executes?
+                </p>
+            </div>
+            <pre class="code-block"><code class="language-python">def eat_fly(fly_count, health_count):
+    if fly_count > 0:
+        fly_count -= 1
+        health_count += 1
+    return fly_count, health_count
+
+def attack_alligatory(fly_count, health_count):
+    health_count -= 1
+    fly_count += 2
+    if health_count < 0:
+        health_count = 0
+    return fly_count, health_count
+
+def game():
+    num_flies = 0
+    num_lives = 5
+
+    i = 0
+    while i < 5:
+        action = input("Press 'e' to eat a fly or 'a' to attack the alligator. ")
+
+        if action == 'e':
+            num_flies, num_lives = eat_fly(num_flies, num_lives)
+        elif action == 'a':
+            num_flies, num_lives = attack_alligator(num_flies, num_lives)
+        
+        if num_lives < 0:
+            print("you died.")
+            break
+        
+        i += 1
+
+game()</code></pre>
+            <div class="panel">
+                <h2>Submit answer</h2>
+                
+                <div class="answer-row">
+                    <input type="text" placeholder="Enter number of flies remaining">
+                    <button class="btn-primary">Submit</button>
+                </div>
+                <p id="feedback-msg"></p>
+            </div>
+        </main>
+
+    </body>
+
+    <footer style="padding:40px; text-align: center;">
+        <a class="btn-investigate" href="home.html" style="display: inline-block; width: auto; padding: 0.5rem 1.25rem;">Back to clue page</a>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+
+</html>
