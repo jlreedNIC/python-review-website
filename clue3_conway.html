@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Clue #3</title>
+        <link rel="stylesheet" href="custom.css">
+
+        <!-- python syntax highlight -->
+         <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    </head>
+    
+    <body>
+        <header class="hero">
+            <div class="hero-content">
+                <span class="arcade-tag">Unsolved</span>
+                <h1>Clue #3</h1>
+                <p>Conway's Game of Life</p>
+            </div>
+        </header>
+
+        <main class="container" style="max-width: 800px; padding: 2rem 1.5rem;">
+            <div class="panel" style="margin-bottom: 2rem;">
+                <h2>Mission Objective</h2>
+                <p>
+                    Use Conway's MODIFIED Game of Life to figure out how many cells are alive after one generation.
+                </p>
+            </div>
+
+            <!-- code block  -->
+             <pre class="code-block"><code class="language-python">import copy
+
+# -------------------
+# function defintions
+# -------------------
+
+def read_conway_file(file_name):
+    """
+    Reads a grid of cells in from a file.
+    """
+
+def count_neighbors(board_gen, y_pos, x_pos):
+    """
+    Counts the number of alive neighbors each cell has.
+    """
+
+def update_cell(cell, num_neighbors):
+    """
+    Determines the state of each cell.
+    """
+    # cell is board_copy[y][x]
+    if cell == alive and num_neighbors == 3:
+        cell = alive
+    elif cell == dead and num_neighbors == 2:
+        cell = alive
+    else:
+        cell = dead
+    
+    return cell
+
+# -------------------
+# initialization
+# -------------------
+
+alive = 'X'
+dead = '.'
+
+board = read_conway_file("sample_start_board.txt")
+
+# -------------------
+# main program
+# -------------------
+
+for generation in range(0, 1):
+    board_copy = copy.deepcopy(board)
+    for y in range(num_rows):
+        for x in range(num_cols):
+            # -- count neighbors --
+            neighbor_count = count_neighbors(board_copy, y, x)
+
+            # -- rules --
+            board[y][x] = update_cell(board_copy[y][x], neighbor_count)</code></pre>
+
+            <!-- submit answer -->
+            <div class="panel">
+                <h2>Submit answer</h2>
+                
+                <div class="answer-row">
+                    <input type="number" placeholder="Enter number of cells alive after one generation" style="font-family: 'Fira Code', monospace;font-size: 12pt;">
+                    <button class="btn-primary">Submit</button>
+                </div>
+                <p id="feedback-msg"></p>
+            </div>
+        </main>
+    </body>
+
+    <footer style="padding:40px; text-align: center;">
+        <a class="btn-investigate" href="home.html" style="display: inline-block; width: auto; padding: 0.5rem 1.25rem;">Back to clue page</a>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+</html>
