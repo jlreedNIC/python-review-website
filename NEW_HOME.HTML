@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arcade Stages | Free the Frog</title>
+    <link rel="stylesheet" href="custom.css">
+</head>
+<body>
+
+    <header class="hero">
+        <div class="hero-content">
+            <span class="arcade-tag">STAGE SELECT</span>
+            <h1>🐸 FREE THE FROG</h1>
+            <p>Debug the arcade cabinet's source files to unlock the exit.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Mission & Live Progress -->
+        <section class="dashboard-top">
+            <div class="panel">
+                <h2>🕹️ The Mission</h2>
+                <p>
+                    The frog is stuck between five lanes of high-speed traffic and a glitching river! 
+                    Each stage file below controls part of the game engine. Solve the Python puzzles 
+                    to uncover the override clues needed to beat the level and free him.
+                </p>
+            </div>
+
+            <div class="panel">
+                <h2>🏆 Escape Progress</h2>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <p id="progress-text">0 / 3 stages cleared</p>
+            </div>
+        </section>
+
+        <!-- Clue Cards Grid -->
+        <section class="clue-grid" id="clue-grid"></section>
+    </main>
+
+    <!-- Interactive Puzzle Modal -->
+    <dialog class="puzzle-modal" id="puzzle-modal">
+        <h2 id="modal-title" style="color: var(--frog-green);">Stage Title</h2>
+        <p id="modal-desc" style="margin-top: 0.5rem; color: var(--text-muted);"></p>
+        <pre class="code-block" id="modal-code"></pre>
+        
+        <div class="answer-row">
+            <input type="text" id="answer-input" placeholder="Enter output or override code...">
+            <button class="btn-primary" id="submit-answer">Unlock</button>
+        </div>
+        <p id="feedback-msg" style="margin-top: 0.85rem; font-weight: 600;"></p>
+        
+        <div style="text-align: right; margin-top: 1.5rem;">
+            <button class="btn-investigate" style="width: auto; padding: 0.45rem 1.25rem;" onclick="modal.close()">Close</button>
+        </div>
+    </dialog>
+
+    <script>
+        // Replace these sample stages with your 12 Frogger puzzles!
+        const clues = [
+            {
+                id: 1,
+                title: "Lane 1: Coordinate Hop",
+                topic: "Variables & Math",
+                summary: "Trace the frog's (x, y) grid position across the starting curb.",
+                prompt: "What final y-coordinate is printed after these hops?",
+                code: "y = 0\nhop_size = 40\ny = y + hop_size * 3\ny = y - (hop_size // 2)\nprint(y)",
+                answer: "100",
+                rewardClue: "Override Digit #1: 7"
+            },
+            {
+                id: 2,
+                title: "Lane 3: Speeding Semi-Truck",
+                topic: "Conditionals",
+                summary: "Check the collision detector before the frog steps into traffic.",
+                prompt: "What status message does the collision engine print?",
+                code: "frog_x = 120\ntruck_x = 100\ntruck_width = 50\nif frog_x >= truck_x and frog_x <= truck_x + truck_width:\n    print('SPLAT')\nelse:\n    print('SAFE')",
+                answer: "SPLAT",
+                rewardClue: "Passcode Fragment: HOP"
+            },
+            {
+                id: 3,
+                title: "River Crossing: Turtle Dive",
+                topic: "Loops",
+                summary: "Calculate how many ticks remain before the diving turtles submerge.",
+                prompt: "What value of 'ticks' is printed at the end?",
+                code: "ticks = 0\nfor frame in range(2, 10, 3):\n    ticks += frame\nprint(ticks)",
+                answer: "15",
+                rewardClue: "Override Digit #2: 4"
+            }
+            // Add Clues 4 through 12 here!
+        ];
+
+        let solvedIds = JSON.parse(localStorage.getItem('froggerSolved')) || [];
+        let activeClue = null;
+
+        const grid = document.getElementById('clue-grid');
+        const modal = document.getElementById('puzzle-modal');
+
+        function renderDashboard() {
+            grid.innerHTML = '';
+            clues.forEach(clue => {
+                const isSolved = solvedIds.includes(clue.id);
+                const card = document.createElement('div');
+                card.className = `clue-card ${isSolved ? 'solved' : ''}`;
+                card.innerHTML = `
+                    <div>
+                        <span class="card-badge">${isSolved ? '✅ CLEARED' : `🕹️ Stage ${clue.id} • ${clue.topic}`}</span>
+                        <h3>${clue.title}</h3>
+                        <p>${isSolved ? `<strong style="color: var(--frog-green);">Unlocked:</strong> ${clue.rewardClue}` : clue.summary}</p>
+                    </div>
+                    <button class="btn-investigate" onclick="openClue(${clue.id})">
+                        ${isSolved ? 'Inspect Code' : 'Play Stage'}
+                    </button>
+                `;
+                grid.appendChild(card);
+            });
+
+            const pct = Math.round((solvedIds.length / clues.length) * 100);
+            document.getElementById('progress-fill').style.width = `${pct}%`;
+            document.getElementById('progress-text').textContent = `${solvedIds.length} / ${clues.length} stages cleared`;
+        }
+
+        function openClue(id) {
+            activeClue = clues.find(c => c.id === id);
+            document.getElementById('modal-title').textContent = `Stage ${activeClue.id}: ${activeClue.title}`;
+            document.getElementById('modal-desc').textContent = activeClue.prompt;
+            document.getElementById('modal-code').textContent = activeClue.code;
+            document.getElementById('answer-input').value = '';
+            document.getElementById('feedback-msg').textContent = '';
+            modal.showModal();
+        }
+
+        document.getElementById('submit-answer').addEventListener('click', () => {
+            const guess = document.getElementById('answer-input').value.trim();
+            const feedback = document.getElementById('feedback-msg');
+
+            if (guess.toLowerCase() === activeClue.answer.toLowerCase()) {
+                feedback.style.color = '#39ff14';
+                feedback.textContent = `STAGE CLEARED! ${activeClue.rewardClue}`;
+                if (!solvedIds.includes(activeClue.id)) {
+                    solvedIds.push(activeClue.id);
+                    localStorage.setItem('froggerSolved', JSON.stringify(solvedIds));
+                    renderDashboard();
+                }
+            } else {
+                feedback.style.color = '#ff4d6d';
+                feedback.textContent = 'GAME OVER — Check your code trace and try again!';
+            }
+        });
+
+        renderDashboard();
+    </script>
+</body>
+</html>
