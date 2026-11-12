@@ -267,7 +267,7 @@ dialog::backdrop {
 
 pre.code-block {
     font-family: 'Fira Code', monospace;
-    background: #070810;
+    background: #070810 !important;
     padding: 1.1rem;
     border-radius: 10px;
     border: 1px solid var(--border-subtle);
@@ -296,96 +296,6 @@ pre.code-block {
 .answer-row input:focus {
     outline: none;
     border-color: var(--frog-green);
-}
-
-/* --- View Switcher Header --- */
-.view-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-}
-
-.view-toggle {
-    display: flex;
-    background: var(--bg-surface);
-    padding: 0.3rem;
-    border-radius: 10px;
-    border: 1px solid var(--border-subtle);
-}
-
-.toggle-btn {
-    background: transparent;
-    border: none;
-    color: var(--text-muted);
-    padding: 0.5rem 1rem;
-    border-radius: 7px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.toggle-btn.active {
-    background: var(--bg-card);
-    color: var(--frog-green);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-.btn-reset {
-    background: transparent;
-    border: 1px solid var(--border-subtle);
-    color: var(--text-muted);
-    font-size: 0.75rem;
-    padding: 0.25rem 0.6rem;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.btn-reset:hover {
-    color: #ff4d6d;
-    border-color: #ff4d6d;
-}
-
-/* --- Shared Stage Card Styles --- */
-.stage-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: 14px;
-    padding: 1.5rem;
-    transition: transform 0.2s ease, border-color 0.2s ease;
-}
-
-.stage-card:hover {
-    border-color: var(--river-cyan);
-    transform: translateY(-3px);
-}
-
-.stage-card.solved {
-    border-color: var(--frog-green);
-    background: linear-gradient(145deg, var(--bg-card), rgba(57, 255, 20, 0.08));
-}
-
-.stage-info h3 {
-    font-size: 1.25rem;
-    margin-bottom: 0.4rem;
-}
-
-.stage-info p {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-}
-
-.status-pill {
-    font-family: 'Fira Code', monospace;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--highway-amber);
-}
-
-.stage-card.solved .status-pill {
-    color: var(--frog-green);
 }
 
 .btn-investigate {
