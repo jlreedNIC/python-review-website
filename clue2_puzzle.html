@@ -3,12 +3,66 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Clue #1</title>
+        <title>Clue #2</title>
         <link rel="stylesheet" href="custom.css">
     </head>
 
     <body>
-        content here!
+        <header class="hero">
+            <div class="hero-content">
+                <span class="arcade-tag">Unsolved</span>
+                <h1>Clue #2</h1>
+                <p>Solve the jigsaw puzzle.</p>
+            </div>
+        </header>
+
+        <!-- main content of page -->
+        <main class="container" style="max-width: 800px; padding: 2rem 1.5rem;">
+        <div class="panel" style="margin-bottom: 2rem;">
+            <h2>Mission Objective</h2>
+            <p>Solve the jigsaw puzzle and flip it over to receive another clue!</p>
+        </div>
+
+        </main>
+
+        <!-- puzzle portion -->
+        <div class="flip-card-container">
+            <input type="checkbox" id="puzzle-flip-toggle" class="flip-checkbox">
+
+            <div class="flip-card">
+                <!-- FRONT SIDE -->
+                <div class="flip-card-face flip-front">
+                    <div>
+                        <h3>Workflow Jigsaw Puzzle</h3>
+                        <p style="color: var(--text-muted); margin-top: 0.5rem;">
+                            [ Jigsaw puzzle interface will go here ]
+                        </p>
+                    </div>
+                    <div style="text-align: right; position: relative; z-index: 5;">
+                        <label for="puzzle-flip-toggle" class="btn-flip">Flip Puzzle Over &rarr;</label>
+                    </div>
+                </div>
+
+                <!-- BACK SIDE -->
+                <div class="flip-card-face flip-back">
+                    <div>
+                        <h3>Grid Clue</h3>
+                        <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 0.9rem;">
+                            The reverse side reveals the initial state matrix for the river cell simulation. Trace one generation to find Digit 3.
+                        </p>
+                        <div class="conway-preview-grid">
+                            <span>.</span><span>#</span><span>.</span>
+                            <span>#</span><span>#</span><span>.</span>
+                            <span>.</span><span>.</span><span>#</span>
+                        </div>
+                    </div>
+                    
+                    <div style="position: relative; z-index: 5;">
+                        <label for="puzzle-flip-toggle" class="btn-flip">&larr; Flip Back to Puzzle</label>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 
     <footer style="padding:40px; text-align: center;">
