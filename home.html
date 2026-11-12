@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stage Select | Free the Frog</title>
+    <title>Clues</title>
     <link rel="stylesheet" href="custom.css">
 </head>
 <body>
 
     <header class="hero">
         <div class="hero-content">
-            <span class="arcade-tag">SYSTEM DIAGNOSTICS</span>
-            <h1>🐸 FREE THE FROG</h1>
+            <span class="arcade-tag">Escape the Game</span>
+            <h1>Python Review Game</h1>
             <p>Inspect the corrupted game modules and solve each puzzle to unlock the exit.</p>
         </div>
     </header>
@@ -20,156 +20,92 @@
         <!-- Mission & Live Progress -->
         <section class="dashboard-top">
             <div class="panel">
-                <h2>🕹️ The Mission</h2>
+                <h2>The Mission</h2>
                 <p>
-                    The frog is trapped inside a glitching arcade cabinet. Each file below 
-                    controls a critical system—from jump mechanics to the river simulation. 
-                    Open each module, solve the puzzle, and collect the escape codes.
+                    The frog is trapped inside the game of Frogger. He needs you to help him escape in 45 min. Can you help him get out before he dies again?
+
+                    Click each clue to investigate.
                 </p>
             </div>
 
             <div class="panel">
-                <h2>🏆 Escape Progress</h2>
+                <h2>Escape Progress</h2>
                 <div class="progress-bar">
                     <div class="progress-fill" id="progress-fill"></div>
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.5rem;">
-                    <p id="progress-text">0 / 4 modules cleared</p>
-                    <button onclick="resetProgress()" class="btn-reset">Reset</button>
+                <div>
+                    <p>0 / 4 modules cleared</p>
                 </div>
             </div>
         </section>
 
-        <!-- View Switcher (Compare File List vs Stage Map) -->
-        <div class="view-header">
-            <h2>Corrupted Modules</h2>
-            <div class="view-toggle">
-                <button id="btn-list-view" class="toggle-btn active" onclick="setView('list')">📁 File Directory</button>
-                <button id="btn-map-view" class="toggle-btn" onclick="setView('map')">🗺️ Stage Map</button>
+        <!-- exit vault -->
+        <section class="exit-vault">
+            <div class="vault-header">
+                <div class="vault-badge">LOCKED</div>
+                <h2>Exit Door</h2>
+                <p>
+                    Enter the 4 digits recovered from the clues to exit the game.</p>
+            </div>
+
+            <!-- vault grid -->
+            <div class="vault-digits-grid">
+                <div class="digit-slot">
+                    <label for="digit 1">Digit 1</label>
+                    <input type="text" class="digit-input" maxlength="1" inputmode="numeric" placeholder="?">
+                    <span class="digit-hint">Number of mistakes when the frog jumps</span>
+                </div>
+                <div class="digit-slot">
+                    <label for="digit 1">Digit 2</label>
+                    <input type="text" class="digit-input" maxlength="1" inputmode="numeric" placeholder="?">
+                    <span class="digit-hint">Correct GitHub workflow</span>
+                </div>
+                <div class="digit-slot">
+                    <label for="digit 1">Digit 3</label>
+                    <input type="text" class="digit-input" maxlength="1" inputmode="numeric" placeholder="?">
+                    <span class="digit-hint">Cells alive after one generation</span>
+                </div>
+                <div class="digit-slot">
+                    <label for="digit 1">Digit 4</label>
+                    <input type="text" class="digit-input" maxlength="1" inputmode="numeric" placeholder="?">
+                    <span class="digit-hint">Number of flies left over</span>
+                </div>
+            </div>
+
+            <!-- submit guess -->
+             <div class="vault-controls">
+                <button class="btn-primary">Unlock Exit Door</button>
+                <p class="vault-feedback"></p>
+             </div>
+        </section>
+
+        <!-- clue grid  -->
+        <div class="clue-grid">
+            <div class="clue-card">
+                <div class="card-badge">Syntax • Debugging</div>
+                <h3>Jump</h3>
+                <p>Identify the clue in the jump code.</p>
+                <a class="btn-investigate">Investigate</a>
+            </div>
+            <div class="clue-card">
+                <div class="card-badge">Version Control</div>
+                <h3>GitHub Workflow</h3>
+                <p>Reassemble the scrambled repository tiles</p>
+                <a class="btn-investigate">Investigate</a>
+            </div>
+            <div class="clue-card">
+                <div class="card-badge">Conway</div>
+                <h3>Conway's game of life</h3>
+                <p>Read the starting grid file and trace one generation of Conway's modified rules to see how many cells survive.</p>
+                <a class="btn-investigate">Investigate</a>
             </div>
         </div>
-
-        <!-- Puzzle Cards Container -->
-        <section id="stages-container" class="file-list-layout">
-
-            <!-- Puzzle 1: Jump Syntax -->
-            <article class="stage-card" data-stage="jump">
-                <div class="stage-node">1</div>
-                <div class="stage-info">
-                    <span class="card-badge">jump_mechanics.py • Syntax Debugging</span>
-                    <h3>The Broken Jump</h3>
-                    <p>Trace the corrupted jump function and identify every syntax error keeping the frog grounded.</p>
-                </div>
-                <div class="stage-action">
-                    <span class="status-pill" id="status-jump">LOCKED</span>
-                    <a href="jump.html" class="btn-investigate">Open File &rarr;</a>
-                </div>
-            </article>
-
-            <!-- Puzzle 2: Git Workflow -->
-            <article class="stage-card" data-stage="git">
-                <div class="stage-node">2</div>
-                <div class="stage-info">
-                    <span class="card-badge">repo_sync.sh • Version Control</span>
-                    <h3>Git Workflow Scramble</h3>
-                    <p>Reassemble the scrambled repository tiles into the proper deployment order to patch the cabinet.</p>
-                </div>
-                <div class="stage-action">
-                    <span class="status-pill" id="status-git">LOCKED</span>
-                    <a href="git.html" class="btn-investigate">Open File &rarr;</a>
-                </div>
-            </article>
-
-            <!-- Puzzle 3: Conway's Game of Life -->
-            <article class="stage-card" data-stage="conway">
-                <div class="stage-node">3</div>
-                <div class="stage-info">
-                    <span class="card-badge">game_of_life.py • 2D Grids & Loops</span>
-                    <h3>River Cell Simulation</h3>
-                    <p>Read the starting grid file and trace one generation of Conway's modified rules to see how many cells survive.</p>
-                </div>
-                <div class="stage-action">
-                    <span class="status-pill" id="status-conway">LOCKED</span>
-                    <a href="conway.html" class="btn-investigate">Open File &rarr;</a>
-                </div>
-            </article>
-
-            <!-- Puzzle 4: Fly & Alligator Trace -->
-            <article class="stage-card" data-stage="flies">
-                <div class="stage-node">4</div>
-                <div class="stage-info">
-                    <span class="card-badge">swamp_survival.py • Functions & State</span>
-                    <h3>Flies & Alligators</h3>
-                    <p>Trace how many flies remain in inventory after running a specific sequence of eating and attacking actions.</p>
-                </div>
-                <div class="stage-action">
-                    <span class="status-pill" id="status-flies">LOCKED</span>
-                    <a href="flies.html" class="btn-investigate">Open File &rarr;</a>
-                </div>
-            </article>
-
-        </section>
     </main>
 
-    <script>
-        const stageKeys = ['jump', 'git', 'conway', 'flies'];
+    <footer style="padding:20px">
+        <p style="text-align: center; color: rgb(71, 71, 71);">Made by Jordan Reed.</p>
+        <a style="display: flex; justify-content: center; color: rgb(71, 71, 71);" href="index.html">Home</a>
+    </footer>
 
-        function updateProgress() {
-            const solved = JSON.parse(localStorage.getItem('froggerSolved')) || [];
-            let clearedCount = 0;
-            let foundNext = false;
-
-            stageKeys.forEach(key => {
-                const isSolved = solved.includes(key);
-                const card = document.querySelector(`[data-stage="${key}"]`);
-                const pill = document.getElementById(`status-${key}`);
-
-                // Remove previous current flags
-                card.classList.remove('current-target');
-
-                if (isSolved) {
-                    clearedCount++;
-                    card.classList.add('solved');
-                    pill.textContent = '✅ CLEARED';
-                } else {
-                    card.classList.remove('solved');
-                    pill.textContent = 'UNSOLVED';
-                    
-                    // Mark the first unsolved stage as the frog's current target
-                    if (!foundNext) {
-                        card.classList.add('current-target');
-                        foundNext = true;
-                    }
-                }
-            });
-
-            const pct = Math.round((clearedCount / stageKeys.length) * 100);
-            document.getElementById('progress-fill').style.width = `${pct}%`;
-            document.getElementById('progress-text').textContent = `${clearedCount} / ${stageKeys.length} modules cleared`;
-        }
-
-        function setView(mode) {
-            const container = document.getElementById('stages-container');
-            const btnList = document.getElementById('btn-list-view');
-            const btnMap = document.getElementById('btn-map-view');
-
-            if (mode === 'map') {
-                container.className = 'stage-map-layout';
-                btnMap.classList.add('active');
-                btnList.classList.remove('active');
-            } else {
-                container.className = 'file-list-layout';
-                btnList.classList.add('active');
-                btnMap.classList.remove('active');
-            }
-        }
-
-        function resetProgress() {
-            localStorage.removeItem('froggerSolved');
-            updateProgress();
-        }
-
-        updateProgress();
-    </script>
 </body>
 </html>
