@@ -57,3 +57,45 @@ document.querySelectorAll(".status-toggle[data-clue-id]").forEach((button) => {
 
 updateProgress();
 window.addEventListener("storage", updateProgress);
+
+const CORRECT_VAULT_CODE = "7647";
+const vaultInputs = [...document.querySelectorAll(".digit-input")];
+const vaultButton = document.querySelector(".vault-controls .btn-primary");
+const vaultFeedback = document.querySelector(".vault-feedback");
+const vaultBadge = document.querySelector(".vault-badge");
+const endingDialog = document.getElementById("ending-dialog");
+const closeEndingButton = document.getElementById("close-ending");
+let endingShown = false;
+
+if (vaultButton) {
+    if (!vaultFeedback || !vaultBadge || !endingDialog ||
+        !closeEndingButton || vaultInputs.length !== CORRECT_VAULT_CODE.length) {
+        console.error("Vault is missing required elements.");
+    } else {
+        closeEndingButton.addEventListener("click", () => endingDialog.close());
+
+        vaultButton.addEventListener("click", () => {
+            const digits = vaultInputs.map((input) => input.value.trim());
+
+            if (!digits.every((digit) => /^\d$/.test(digit))) {
+                vaultFeedback.textContent = "Enter one digit in each slot.";
+                vaultFeedback.style.color = "#ff4d6d";
+                return;
+            }
+
+            const unlocked = digits.join("") === CORRECT_VAULT_CODE;
+
+            vaultBadge.textContent = unlocked ? "UNLOCKED" : "LOCKED";
+            vaultBadge.classList.toggle("unlocked", unlocked);
+            vaultFeedback.textContent = unlocked
+                ? "Correct code - the exit is unlocked!"
+                : "Incorrect code. Check your clues and try again.";
+            vaultFeedback.style.color = unlocked ? "var(--frog-green)" : "#ff4d6d";
+            if (unlocked && !endingShown) {
+                endingDialog.showModal();
+                endingShown = true;
+            }
+            
+        });
+    }
+}
