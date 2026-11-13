@@ -7,19 +7,42 @@
     <link rel="stylesheet" href="custom.css">
 </head>
 <body>
-    <header class="hero hero-landing">
+    <header class="hero hero-landing">        
         <div class="hero-content">
             <span class="arcade-tag">VIRTUAL ESCAPE ROOM</span>
             <h1>PYTHON REVIEW GAME</h1>
-            <p>
-                A glitch has trapped the player inside the classic <strong>Frogger</strong> arcade cabinet! 
-                Trace the corrupted Python game logic, dodge infinite loops, and collect all 
-                the override codes to help him reach the goal bay.
-            </p>
-            <a class="btn-primary" href="home.html">
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));">
+                
+                <div style="display: flex;">
+                    <p style="max-width: 800px;">
+                        A late night programming assignment gone wrong has trapped you in the game of <strong>Frogger</strong>. A sad frog asks you to help him escape when you do, before he has to run across the highway again! Can you free yourself and your unlikely companion in 45 minutes? 
+
+                        <br /><br />Gather clues in the form of Python code to exit the game.
+                    </p>
+                </div>
+                <div style="display: flex; justify-content: center;">
+                    <Image 
+                        src="images/frogger.jpg" style="width: 300px; border-radius: 15px; border: 2px solid var(--river-cyan);" 
+                        alt="Trapped sad pixel art frog behind arcade glass" 
+                        caption="Subject #404: Un-freed" 
+                    />
+                </div>
+            </div>
+            
+            <div style="margin-top: 50px;">
+                <a class="btn-primary" href="home.html">
                 Press Start &rarr;
             </a>
+            </div>
+            
+
+            <p style="padding-top: 50px; color: rgb(71, 71, 71); font-size: 16px; bottom: 0;">
+                This was developed by Jordan Reed as a review for the Python test in CS 115 at North Idaho College in Fall of 2026.
+            </p>
         </div>
+        
     </header>
+    
 </body>
 </html>
