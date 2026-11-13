@@ -23,12 +23,12 @@
         </header>
 
         <main class="container" style="max-width: 800px; padding: 2rem 1.5rem;">
-            <div class="panel" style="margin-bottom: 2rem;">
+            <!-- <div class="panel" style="margin-bottom: 2rem;">
                 <h2>Mission Objective</h2>
                 <p>
                     Use Conway's MODIFIED Game of Life to figure out how many cells are alive after one generation.
                 </p>
-            </div>
+            </div> -->
 
             <!-- code block  -->
              <pre class="code-block"><code class="language-python">import copy
@@ -84,16 +84,20 @@ for generation in range(0, 1):
             # -- rules --
             board[y][x] = update_cell(board_copy[y][x], neighbor_count)</code></pre>
 
-            <!-- submit answer -->
-            <div class="panel">
-                <h2>Submit answer</h2>
-                
-                <div class="answer-row">
-                    <input type="number" placeholder="Enter number of cells alive after one generation" style="font-family: 'Fira Code', monospace;font-size: 12pt;">
-                    <button class="btn-primary">Submit</button>
-                </div>
-                <p id="feedback-msg"></p>
-            </div>
+            <!-- hint button -->
+            <details class="panel" style="margin-bottom: 2rem;">
+                <summary>Need a hint?</summary>
+                <p style="margin-top: 0.75rem; color: var(--text-muted);">
+                    How many cells are alive after one generation?
+                </p>
+
+                <details style="margin-top: 2rem;">
+                    <summary>Need another hint?</summary>
+                    <p style="margin-top: 0.75rem; color: var(--text-muted);">
+                        Did you solve the jigsaw puzzle first? The reverse side of the puzzle reveals the starting configuration of cells.
+                    </p>
+                </details>
+            </details>
         </main>
         <footer style="padding:40px; text-align: center;">
             <a class="btn-investigate" href="home.html" style="display: inline-block; width: auto; padding: 0.5rem 1.25rem;">Back to clue page</a>
