@@ -22,10 +22,10 @@
 
         <!-- main content of page -->
         <main class="container" style="max-width: 800px; padding: 2rem 1.5rem;">
-            <div class="panel" style="margin-bottom: 2rem;">
+            <!-- <div class="panel" style="margin-bottom: 2rem;">
                 <h2>Mission Objective</h2>
                 <p>Solve the jigsaw puzzle and flip it over to receive another clue!</p>
-            </div>
+            </div> -->
             <!-- puzzle portion -->
             <div class="flip-card-container" >
                 <input type="checkbox" id="puzzle-flip-toggle" class="flip-checkbox">
@@ -64,6 +64,21 @@
                     </div>
                 </div>
             </div>
+
+            <!-- hint button -->
+            <details class="panel" style="margin-bottom: 2rem;">
+                <summary>Need a hint?</summary>
+                <p style="margin-top: 0.75rem; color: var(--text-muted);">
+                    Solve the jigsaw puzzle.
+                </p>
+
+                <details style="margin-top: 2rem;">
+                    <summary>Need another hint?</summary>
+                    <p style="margin-top: 0.75rem; color: var(--text-muted);">
+                        The revserse side of the puzzle reveals a grid of cells to use in Conway's Game of Life.
+                    </p>
+                </details>
+            </details>
 
         </main>
 
