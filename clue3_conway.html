@@ -13,9 +13,12 @@
     <body>
         <header class="hero">
             <div class="hero-content">
-                <span class="arcade-tag">Unsolved</span>
                 <h1>Clue #3</h1>
                 <p>Conway's Game of Life</p>
+                <button class="arcade-tag status-toggle" type="button" aria-pressed="false"
+                data-clue-id="3">
+                    Unsolved
+                </button>
             </div>
         </header>
 
@@ -95,6 +98,7 @@ for generation in range(0, 1):
         <footer style="padding:40px; text-align: center;">
             <a class="btn-investigate" href="home.html" style="display: inline-block; width: auto; padding: 0.5rem 1.25rem;">Back to clue page</a>
         </footer>
+        <script src="js/progress.js"></script>
     </body>
 
     

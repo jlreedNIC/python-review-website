@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clues</title>
     <link rel="stylesheet" href="custom.css">
+    
 </head>
 <body>
 
@@ -30,11 +31,11 @@
 
             <div class="panel">
                 <h2>Escape Progress</h2>
-                <div class="progress-bar">
+                <div class="progress-bar" role="progressbar"aria-label="Puzzle progress" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0">
                     <div class="progress-fill" id="progress-fill"></div>
                 </div>
                 <div>
-                    <p>0 / 5 puzzles cleared</p>
+                    <p id="progress-text">0 / 5 puzzles cleared</p>
                 </div>
             </div>
         </section>
@@ -81,34 +82,71 @@
 
         <!-- clue grid  -->
         <div class="clue-grid">
-            <div class="clue-card">
+            <div class="clue-card" data-clue-id="1">
                 <div class="card-badge">Control Flow • I/O • Functions</div>
                 <h3>Clue #1</h3>
                 <p>Read the code and find the output.</p>
+
+                <button class="arcade-tag status-toggle" type="button" aria-pressed="false"
+                data-clue-id="1"
+                style="margin-top: 5px; margin-bottom: 15px">
+                    Unsolved
+                </button>
+
                 <a class="btn-investigate" href="clue1.html">Investigate</a>
+                
+                
             </div>
-            <div class="clue-card">
+            <div class="clue-card" data-clue-id="2">
                 <div class="card-badge">Puzzle • Conway</div>
                 <h3>Clue #2</h3>
                 <p>Solve the Jigsaw Puzzle</p>
+
+                <button class="arcade-tag status-toggle" type="button" aria-pressed="false"
+                data-clue-id="2"
+                style="margin-top: 5px; margin-bottom: 15px">
+                    Unsolved
+                </button>
+
                 <a class="btn-investigate" href="clue2_puzzle.html">Investigate</a>
             </div>
-            <div class="clue-card">
+            <div class="clue-card" data-clue-id="3">
                 <div class="card-badge">Conway • Functions • Control Flow</div>
                 <h3>Clue #3</h3>
                 <p>Conway's Game of Life</p>
+
+                <button class="arcade-tag status-toggle" type="button" aria-pressed="false"
+                data-clue-id="3"
+                style="margin-top: 5px; margin-bottom: 15px">
+                    Unsolved
+                </button>
+
                 <a class="btn-investigate" href="clue3_conway.html">Investigate</a>
             </div>
-            <div class="clue-card">
+            <div class="clue-card" data-clue-id="4">
                 <div class="card-badge">Syntax • Debugging</div>
                 <h3>Clue #4</h3>
                 <p>def jump()</p>
+
+                <button class="arcade-tag status-toggle" type="button" aria-pressed="false"
+                data-clue-id="4"
+                style="margin-top: 5px; margin-bottom: 15px">
+                    Unsolved
+                </button>
+
                 <a class="btn-investigate" href="clue4_syntax.html">Investigate</a>
             </div>
-            <div class="clue-card">
+            <div class="clue-card" data-clue-id="5">
                 <div class="card-badge">GitHub</div>
                 <h3>Clue #5</h3>
                 <p>Git Workflow</p>
+
+                <button class="arcade-tag status-toggle" type="button" aria-pressed="false"
+                data-clue-id="5"
+                style="margin-top: 5px; margin-bottom: 15px">
+                    Unsolved
+                </button>
+
                 <a class="btn-investigate" href="clue5_github.html">Investigate</a>
             </div>
         </div>
@@ -117,6 +155,7 @@
     <footer style="padding:20px">
         <a style="display: flex; justify-content: center; color: rgb(71, 71, 71);" href="index.html">Home</a>
     </footer>
+    <script src="js/progress.js"></script>
 
 </body>
 </html>

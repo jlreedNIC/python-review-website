@@ -10,9 +10,13 @@
     <body>
         <header class="hero">
             <div class="hero-content">
-                <span class="arcade-tag">Unsolved</span>
+                
                 <h1>Clue #2</h1>
-                <p>Solve the jigsaw puzzle.</p>
+                
+                <button class="arcade-tag status-toggle" type="button" aria-pressed="false"
+                data-clue-id="2">
+                    Unsolved
+                </button>
             </div>
         </header>
 
@@ -66,5 +70,7 @@
         <footer style="padding:40px; text-align: center;">
             <a class="btn-investigate" href="home.html" style="display: inline-block; width: auto; padding: 0.5rem 1.25rem;">Back to clue page</a>
         </footer>
+
+        <script src="js/progress.js"></script>
     </body>
 </html>

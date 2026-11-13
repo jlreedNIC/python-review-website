@@ -55,7 +55,9 @@ body {
 
 .arcade-tag {
     display: inline-block;
-    font-family: 'Press Start 2P', monospace;
+    /* font-family: 'Press Start 2P', monospace; */
+    font-family: 'Fira Code', monospace;
+    text-transform: uppercase;
     font-size: 0.7rem;
     letter-spacing: 1px;
     padding: 0.5rem 1rem;
@@ -432,7 +434,7 @@ pre.code-block {
 .flip-card-container {
     perspective: 1200px;
     width: 100%;
-    max-width: 650px;
+    /* max-width: 650px; */
     margin: 2rem auto;
     min-height: 380px;
 }
@@ -518,4 +520,16 @@ pre.code-block {
     justify-content: center;
     border-radius: 6px;
     color: var(--river-cyan);
+}
+
+/* button status toggles  */
+.status-toggle {
+    appearance: none;
+    cursor: pointer;
+}
+
+.status-toggle[aria-pressed="true"] {
+    background: rgba(57, 255, 20, 0.15);
+    color: var(--frog-green);
+    border-color: rgba(57, 255, 20, 0.4);
 }
