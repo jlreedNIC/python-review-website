@@ -134,6 +134,7 @@ body {
     border: 1px solid var(--border-subtle);
     border-radius: 14px;
     padding: 1.75rem;
+    margin-top: 20px;
 }
 
 .panel h2 {
@@ -280,7 +281,7 @@ pre.code-block {
 .answer-row {
     display: flex;
     gap: 0.6rem;
-    margin-top: 1rem;
+    margin-top: 2rem;
 }
 
 .answer-row input {

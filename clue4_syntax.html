@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Clue #4</title>
+        <link rel="stylesheet" href="custom.css">
+
+        <!-- python syntax highlight -->
+         <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    </head>
+    
+    <body>
+        <header class="hero">
+            <div class="hero-content">
+                <span class="arcade-tag">Unsolved</span>
+                <h1>Clue #4</h1>
+                <p>def jump()</p>
+            </div>
+        </header>
+
+        <!-- main content -->
+        <main class="container" style="max-width: 800px; padding: 2rem 1.5rem;">
+            <div class="panel" style="margin-bottom: 2rem;">
+                <h2>Mission Objective</h2>
+                <p>Find all the syntax errors.</p>
+            </div>
+
+            <!-- code block -->
+            <pre class="code-block"><code class="language-python">define jump():
+    height = 0
+    if NOT in_air:
+        height + 10
+    else
+        in_air = false
+        height = 0
+
+    return height;
+
+in_air == False
+frog_height = jump()</code></pre>
+
+            <!-- submit answer -->
+            <div class="panel">
+                <h2>Submit answer</h2>
+                
+                <div class="answer-row">
+                    <input type="number" placeholder="Number of syntax errors" style="font-family: 'Fira Code', monospace;font-size: 12pt;">
+                    <button class="btn-primary">Submit</button>
+                </div>
+                <p id="feedback-msg"></p>
+            </div>
+        </main>
+    </body>
+
+    <footer style="padding:40px; text-align: center;">
+        <a class="btn-investigate" href="home.html" style="display: inline-block; width: auto; padding: 0.5rem 1.25rem;">Back to clue page</a>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+</html>
