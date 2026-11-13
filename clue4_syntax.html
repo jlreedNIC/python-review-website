@@ -24,10 +24,10 @@
 
         <!-- main content -->
         <main class="container" style="max-width: 800px; padding: 2rem 1.5rem;">
-            <div class="panel" style="margin-bottom: 2rem;">
+            <!-- <div class="panel" style="margin-bottom: 2rem;">
                 <h2>Mission Objective</h2>
                 <p>Find all the syntax errors.</p>
-            </div>
+            </div> -->
 
             <!-- code block -->
             <pre class="code-block"><code class="language-python">define jump():
@@ -43,16 +43,20 @@
 in_air == False
 frog_height = jump()</code></pre>
 
-            <!-- submit answer -->
-            <div class="panel">
-                <h2>Submit answer</h2>
-                
-                <div class="answer-row">
-                    <input type="number" placeholder="Number of syntax errors" style="font-family: 'Fira Code', monospace;font-size: 12pt;">
-                    <button class="btn-primary">Submit</button>
-                </div>
-                <p id="feedback-msg"></p>
-            </div>
+            <!-- hint button -->
+            <details class="panel" style="margin-bottom: 2rem;">
+                <summary>Need a hint?</summary>
+                <p style="margin-top: 0.75rem; color: var(--text-muted);">
+                    How many syntax errors can you find in the code?
+                </p>
+
+                <details style="margin-top: 2rem;">
+                    <summary>Need another hint?</summary>
+                    <p style="margin-top: 0.75rem; color: var(--text-muted);">
+                        Check the function definition, the if statement, and the return statement.
+                    </p>
+                </details>
+            </details>
         </main>
         <footer style="padding:40px; text-align: center;">
             <a class="btn-investigate" href="home.html" style="display: inline-block; width: auto; padding: 0.5rem 1.25rem;">Back to clue page</a>
